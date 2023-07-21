@@ -116,20 +116,20 @@ const NavigationBar = () => {
                                                 </a>
                                             </li>
                                             <li onClick={handleLogout}>
-                                                <a className="hover:!bg-neutral/10">Logout</a>
+                                                <a className="hover:!bg-neutral/10">Sign Out</a>
                                             </li>
                                         </ul>
                                     </div>
                                 ) : (
                                     <>
                                         <Link
-                                            to="/login"
+                                            to="/signin"
                                             className="hidden sm:inline-flex btn btn-gradient rounded-full min-h-fit h-10"
                                         >
-                                            Login
+                                            Sign In
                                         </Link>
                                         <Link
-                                            to="/login"
+                                            to="signin"
                                             className="btn sm:hidden btn-ghost text-2xl min-h-fit h-10 text-secondary"
                                         >
                                             <BiLogIn />

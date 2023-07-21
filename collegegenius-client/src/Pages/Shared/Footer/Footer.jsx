@@ -15,7 +15,7 @@ const Footer = () => {
     const theme = 'white';
 
     return (
-        <footer className="p-10 bg-base-300">
+        <footer className="p-10 mt-6 bg-base-300">
             <div className="footer container py-4 lg:px-7 justify-between">
                 <div>
                     <div className="flex items-center mb-5">

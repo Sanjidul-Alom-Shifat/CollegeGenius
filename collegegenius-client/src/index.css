@@ -119,3 +119,32 @@
   .dashboard.menu a.active {
     @apply bg-neutral/10 rounded-s-none text-neutral border-secondary;
   }
+
+  .input_group{
+    @apply flex border rounded-xl;
+    position: relative;
+  }
+
+  .input_text{
+      @apply w-full py-4 px-6 border rounded-xl bg-slate-50;
+      @apply focus:outline-none border-none
+  }
+  
+  .input_form{
+      @apply w-full py-4 border rounded-xl bg-slate-50;
+      @apply focus:outline-none border-none
+  }
+  
+  .button{
+      @apply w-full bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500 rounded-md;
+      @apply py-3 text-white text-lg font-semibold
+  }
+  
+  .button:hover{
+      @apply bg-gradient-to-r from-blue-600 via-purple-600 to-rose-600 rounded-md;
+      @apply py-3 text-white text-lg font-semibold cursor-pointer ;
+  }
+  
+  .button_custom{
+  @apply w-full border py-3 flex justify-center gap-2 hover:bg-gray-200;
+  }
