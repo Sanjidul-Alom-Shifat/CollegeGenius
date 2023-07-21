@@ -1,69 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  font-family: "Roboto", sans-serif, Inter;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  .active{
+    @apply text-lg font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-br  from-blue-600 via-purple-600 to-rose-600  duration-200
   }
-  a:hover {
-    color: #747bff;
+  .default{
+    @apply text-lg font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-700
   }
-  button {
-    background-color: #f9f9f9;
+  .rn-gradient-circle {
+    background-image: linear-gradient(45deg, #059dff, #36c6f0);
+    -webkit-filter: blur(100px);
+    filter: blur(100px);
+    @apply fixed w-[500px] h-[500px] top-64 -left-64 -z-10 rounded-full opacity-25;
   }
-}
+  .rn-gradient-circle.theme-pink {
+    background-image: linear-gradient(45deg, #fb5343, #6549d5);
+    @apply -top-64 -right-64 left-auto bottom-auto;
+  }
+  .gradient-bg {
+    background: linear-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343
+      )
+      95%/200% 100%;
+  }
+  .gradient-text {
+    background: -webkit-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343 100%
+      )
+      98%/200% 100%;
+    background: linear-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343
+      )
+      98%/200% 100%;
+    @apply bg-clip-text text-transparent;
+  }
+  /* .menu a {
+    @apply font-medium bg-inherit hover:bg-inherit focus:bg-inherit duration-200;
+  }
+  .menu a:hover {
+    @apply text-primary;
+  }
+  .menu a.active {
+    @apply text-primary;
+  } */
+  .btn-gradient {
+    background: linear-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343
+      )
+      95%/200% 100%;
+    @apply text-white px-8;
+  }
+  .btn-gradient:hover {
+    background: linear-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343
+      )
+      70%/200% 100%;
+  }
+  .swiper-pagination-bullet {
+    @apply bg-neutral/70 scale-110 w-10 rounded-none;
+  }
+  .swiper-pagination-bullet-active {
+    @apply bg-secondary;
+  }
+  .container {
+    @apply mx-auto px-4 md:px-6 xl:px-8;
+  }
+  .page-header-dark {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.7)
+      ),
+      url("https://i.ibb.co/qNpgyS4/Teachers-looking-at-camera-on-our-photography-training-day.jpg");
+  }
+  .page-header-light {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.7)
+      ),
+      url("https://i.ibb.co/qNpgyS4/Teachers-looking-at-camera-on-our-photography-training-day.jpg");
+  }
+  .breadcrumbs a,
+  .footer a {
+    @apply hover:text-primary duration-200;
+  }
+  .dashboard.menu a {
+    @apply border-l-4 border-transparent py-3;
+  }
+  .dashboard.menu a:hover {
+    @apply bg-neutral/10 text-neutral;
+  }
+  .dashboard.menu a.active {
+    @apply bg-neutral/10 rounded-s-none text-neutral border-secondary;
+  }
