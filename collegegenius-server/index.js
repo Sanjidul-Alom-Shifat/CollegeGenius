@@ -31,6 +31,7 @@ async function run() {
 
         // collection
         const usersCollection = client.db('CollegeGeniusDB').collection('users');
+        const collegesCollection = client.db('CollegeGeniusDB').collection('colleges');
 
 
         // post a user
@@ -47,7 +48,8 @@ async function run() {
             res.send(result);
         })
 
-        // get user
+        // get colleges
+
         
 
 

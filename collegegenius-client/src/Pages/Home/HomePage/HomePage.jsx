@@ -2,6 +2,7 @@
 import { Helmet } from 'react-helmet-async';
 import Banner from '../Banner/Banner';
 import Gallery from '../Gallery/Gallery';
+import ResearchHistory from '../ResearchHistory/ResearchHistory';
 
 const HomePage = () => {
     return (
@@ -16,6 +17,8 @@ const HomePage = () => {
 
 
             <Gallery></Gallery>
+
+            <ResearchHistory></ResearchHistory>
 
         </div>
     );
