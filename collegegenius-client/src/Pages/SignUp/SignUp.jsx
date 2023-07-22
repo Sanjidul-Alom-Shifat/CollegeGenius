@@ -2,9 +2,11 @@ import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers/AuthProvider';
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -15,6 +17,15 @@ const SignUp = () => {
     const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
+    const {
+        CreateUser,
+        UpdateUserData,
+        GoogleSignIn,
+        loading,
+        setLoading,
+        LogOutUser
+    } = useContext(AuthContext);
+
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     }
@@ -23,7 +34,7 @@ const SignUp = () => {
         setshowConfirmPassword(!showConfirmPassword);
     }
 
-    const onSubmit = (data) => { 
+    const onSubmit = (data) => {
 
         if (data.password.length < 6) {
             toast.error('Password must be at least 6 characters long.');
@@ -35,10 +46,80 @@ const SignUp = () => {
             return;
         }
 
+        console.log(data);
+        CreateUser(data?.email, data?.password)
+            .then((result) => {
+                const loggedUser = result.user;
+                UpdateUserData(data?.name, data?.photoURL)
+                    .then(() => {
+                        const usersData = {
+                            name: loggedUser.displayName,
+                            email: loggedUser.email,
+                            image: loggedUser.photoURL,
+                            role: "student",
+                        };
+                        console.log("updated", usersData);
+
+                        axios
+                            .post(
+                                "http://localhost:5000/users",
+                                usersData
+                            )
+                            .then((res) => {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'User created successfully.',
+                                    showConfirmButton: true,
+                                    // timer: 1500
+                                });
+                                reset();
+                                console.log(res.data);
+                                navigate(from, { replace: true });
+                            });
+                    })
+                    .catch((error) => toast.error(error.message));
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
     }
 
     const HandleGoogleLogin = () => {
-        
+        GoogleSignIn()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+
+                const usersData = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email,
+                    image: loggedUser.photoURL,
+                    role: "student",
+                };
+
+                axios
+                    .post(
+                        "http://localhost:5000/users",
+                        usersData
+                    )
+                    .then((res) => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: true,
+                            // timer: 1500
+                        });
+                        console.log(res.data);
+                        navigate(from, { replace: true });
+                    });
+            })
+            .catch(error => {
+                const ErrorMessage = error.message;
+                console.log(ErrorMessage)
+                toast.error(error.message);
+            })
     }
 
     return (
@@ -99,7 +180,7 @@ const SignUp = () => {
                             <input
                                 type={showPassword ? "text" : "password"}
                                 name='password'
-                                placeholder='password'
+                                placeholder='Password'
                                 className="input_text"
                                 required
                                 {...register("password", { required: true })}
@@ -116,7 +197,6 @@ const SignUp = () => {
                                 <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Show Password</label>
                             </div>
                         </div>
-                        <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                     </div>
 
                     {/* for confirm password */}
@@ -143,7 +223,6 @@ const SignUp = () => {
                                 <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Show Password</label>
                             </div>
                         </div>
-                        <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                     </div>
 
                     {/* login buttons */}
@@ -166,7 +245,7 @@ const SignUp = () => {
                     {/* TODO */}
                     <div className="input-button">
                         <button onClick={HandleGoogleLogin} type='button' className="button_custom rounded-md font-semibold">
-                            Sign In with Google <FaGoogle className='h-6 w-9'></FaGoogle>
+                            Sign In with GitHub <FaGithub className='h-6 w-9'></FaGithub>
                         </button>
                     </div>
 

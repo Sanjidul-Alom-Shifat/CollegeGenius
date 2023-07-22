@@ -1,7 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { MdOutlineClose } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const navItems = [
     {
@@ -27,12 +30,26 @@ const navItems = [
 const NavigationBar = () => {
 
     const drawerRef = useRef();
-    const user = false;
+    const { user, LogOutUser } = useContext(AuthContext);
+    console.log(user)
     
     // const theme = 'white'; // TODO
 
     const handleLogout = () => {
-        console.log('dd')
+        LogOutUser()
+            .then(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User log out successfully.',
+                    showConfirmButton: true,
+                    // timer: 1500
+                });
+            })
+            .catch((error) => {
+                console.log(error.message);
+                toast.error(error.message);
+            })
     };
 
     return (
