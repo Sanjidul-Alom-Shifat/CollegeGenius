@@ -32,7 +32,7 @@ const NavigationBar = () => {
     const drawerRef = useRef();
     const { user, LogOutUser } = useContext(AuthContext);
     console.log(user)
-    
+
     // const theme = 'white'; // TODO
 
     const handleLogout = () => {
@@ -113,6 +113,21 @@ const NavigationBar = () => {
                                 </ul>
                             </div>
                             <div className="shrink-0 flex items-center gap-2">
+
+                                <form className="hidden lg:block">
+                                    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                            </svg>
+                                        </div>
+                                        <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-rose-300 rounded-lg bg-gray-50 focus:ring-rose-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-purple-500" placeholder="Search college" required />
+                                        <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                                    </div>
+                                </form>
+
+
                                 {user ? (
                                     <div className="dropdown dropdown-end">
                                         <label
@@ -202,6 +217,7 @@ const NavigationBar = () => {
                             </h2>
                         </div>
                         <ul className="space-y-3 ml-4 ">
+
                             {navItems.map((item, id) => {
                                 if (item.type !== "private") {
                                     return (
@@ -216,6 +232,7 @@ const NavigationBar = () => {
                                                 {item.name}
                                             </NavLink>
                                         </li>
+
                                     );
                                 } else {
                                     if (user) {
@@ -231,7 +248,23 @@ const NavigationBar = () => {
                                         );
                                     }
                                 }
+
                             })}
+
+                            <li>
+                                <form>
+                                    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                    <div className="relative">
+                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                            </svg>
+                                        </div>
+                                        <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-rose-300 rounded-lg bg-gray-50 focus:ring-rose-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-purple-500" placeholder="Search college" required />
+                                        <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                                    </div>
+                                </form>
+                            </li>
                         </ul>
                     </ul>
                 </div>
