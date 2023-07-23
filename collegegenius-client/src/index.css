@@ -51,6 +51,26 @@
       98%/200% 100%;
     @apply bg-clip-text text-transparent;
   }
+
+  .gradient-anchortext {
+    background: -webkit-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343 100%
+      )
+      98%/200% 100%;
+    background: linear-gradient(
+        95deg,
+        #059dff 15%,
+        #6549d5 45%,
+        #e33fa1 75%,
+        #fb5343
+      )
+      98%/200% 100%;
+    @apply bg-clip-text text-transparent underline;
+  }
   /* .menu a {
     @apply font-medium bg-inherit hover:bg-inherit focus:bg-inherit duration-200;
   }

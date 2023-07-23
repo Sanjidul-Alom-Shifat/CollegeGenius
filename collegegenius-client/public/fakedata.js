@@ -22,7 +22,7 @@
             }
         ],
         "researchWork": "Harvard University is a leading research university with a focus on the natural sciences, social sciences, and humanities.",
-        "researchHistory": "Harvard University has a long history of research, dating back to the 17th century like natural sciences, social sciences, and humanities.",
+        "researchHistory": "Harvard University has a long history of research, dating back to the 17th century.",
         "researchLink": "https://college.harvard.edu/academics/research",
         "sports": [
             {

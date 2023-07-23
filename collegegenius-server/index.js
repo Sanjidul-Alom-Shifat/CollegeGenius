@@ -48,8 +48,17 @@ async function run() {
             res.send(result);
         })
 
+        // get research paper
+        app.get('/research', async (req, res) => {
+            const result = await collegesCollection.find().toArray();
+            res.send(result);
+        })
+        
         // get colleges
-
+        app.get('/colleges', async (req, res) => {
+            const result = await collegesCollection.find().toArray();
+            res.send(result);
+        })
         
 
 
