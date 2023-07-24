@@ -51,7 +51,7 @@ const Banner = () => {
                                 to="/colleges"
                                 className="btn md:btn-lg btn-gradient rounded-full"
                             >
-                                Explore Classes
+                                Explore Colleges
                             </Link>
                         </div>
                     </div>

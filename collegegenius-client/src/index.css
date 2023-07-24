@@ -164,6 +164,16 @@
       @apply bg-gradient-to-r from-blue-600 via-purple-600 to-rose-600 rounded-md;
       @apply py-3 text-white text-lg font-semibold cursor-pointer ;
   }
+
+  .button1{
+      @apply w-full bg-gradient-to-r from-blue-300 via-purple-300 to-rose-300 rounded-md;
+      @apply py-3 text-black text-lg font-semibold
+  }
+  
+  .button1:hover{
+      @apply bg-gradient-to-r from-blue-500 via-purple-400 to-rose-400 rounded-md;
+      @apply py-3 text-white text-lg font-semibold cursor-pointer ;
+  }
   
   .button_custom{
   @apply w-full border py-3 flex justify-center gap-2 hover:bg-gray-200;

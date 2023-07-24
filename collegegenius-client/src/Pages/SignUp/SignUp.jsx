@@ -21,8 +21,6 @@ const SignUp = () => {
         CreateUser,
         UpdateUserData,
         GoogleSignIn,
-        loading,
-        setLoading,
         LogOutUser
     } = useContext(AuthContext);
 
@@ -62,7 +60,7 @@ const SignUp = () => {
 
                         axios
                             .post(
-                                "http://localhost:5000/users",
+                                "https://collegegenius-server.vercel.app/users",
                                 usersData
                             )
                             .then((res) => {
@@ -75,10 +73,14 @@ const SignUp = () => {
                                 });
                                 reset();
                                 console.log(res.data);
-                                navigate(from, { replace: true });
                             });
                     })
                     .catch((error) => toast.error(error.message));
+                LogOutUser()
+                    .then(() => {
+
+                    })
+                navigate('/signin');
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -100,7 +102,7 @@ const SignUp = () => {
 
                 axios
                     .post(
-                        "http://localhost:5000/users",
+                        "https://collegegenius-server.vercel.app/users",
                         usersData
                     )
                     .then((res) => {

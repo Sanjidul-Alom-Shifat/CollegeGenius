@@ -61,7 +61,7 @@ const SignIn = () => {
 
                 axios
                     .post(
-                        "http://localhost:5000/users",
+                        "https://collegegenius-server.vercel.app/users",
                         usersData
                     )
                     .then((res) => {
@@ -116,7 +116,7 @@ const SignIn = () => {
 
                 axios
                     .post(
-                        "http://localhost:5000/users",
+                        "https://collegegenius-server.vercel.app/users",
                         usersData
                     )
                     .then((res) => {
@@ -192,7 +192,7 @@ const SignIn = () => {
                         >
                             Forget password?
                         </a>
-                        
+
                     </div>
 
                     {/* login buttons */}
